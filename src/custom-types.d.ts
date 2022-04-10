@@ -1,31 +1,23 @@
-import {
-    Text,
-    createEditor,
-    Node,
-    Element,
-    Editor,
-    Descendant,
-    BaseEditor,
-} from 'slate'
-import { ReactEditor } from 'slate-react'
-import { HistoryEditor } from 'slate-history'
+import {BaseEditor, Descendant,} from 'slate'
+import {ReactEditor} from 'slate-react'
+import {HistoryEditor} from 'slate-history'
 
 export type BlockQuoteElement = { type: 'block-quote'; children: Descendant[] }
 
 export type BulletedListElement = {
-    type: 'bulleted-list'
-    children: Descendant[]
+  type: 'bulleted-list'
+  children: Descendant[]
 }
 
 export type CheckListItemElement = {
-    type: 'check-list-item'
-    checked: boolean
-    children: Descendant[]
+  type: 'check-list-item'
+  checked: boolean
+  children: Descendant[]
 }
 
 export type EditableVoidElement = {
-    type: 'editable-void'
-    children: EmptyText[]
+  type: 'editable-void'
+  children: EmptyText[]
 }
 
 export type HeadingElement = { type: 'heading'; children: Descendant[] }
@@ -33,9 +25,9 @@ export type HeadingElement = { type: 'heading'; children: Descendant[] }
 export type HeadingTwoElement = { type: 'heading-two'; children: Descendant[] }
 
 export type ImageElement = {
-    type: 'image'
-    url: string
-    children: EmptyText[]
+  type: 'image'
+  url: string
+  children: EmptyText[]
 }
 
 export type LinkElement = { type: 'link'; url: string; children: Descendant[] }
@@ -45,9 +37,9 @@ export type ButtonElement = { type: 'button'; children: Descendant[] }
 export type ListItemElement = { type: 'list-item'; children: Descendant[] }
 
 export type MentionElement = {
-    type: 'mention'
-    character: string
-    children: CustomText[]
+  type: 'mention'
+  character: string
+  children: CustomText[]
 }
 
 export type ParagraphElement = { type: 'paragraph'; children: Descendant[] }
@@ -63,41 +55,41 @@ export type TitleElement = { type: 'title'; children: Descendant[] }
 export type VideoElement = { type: 'video'; url: string; children: EmptyText[] }
 
 type CustomElement =
-    | BlockQuoteElement
-    | BulletedListElement
-    | CheckListItemElement
-    | EditableVoidElement
-    | HeadingElement
-    | HeadingTwoElement
-    | ImageElement
-    | LinkElement
-    | ButtonElement
-    | ListItemElement
-    | MentionElement
-    | ParagraphElement
-    | TableElement
-    | TableRowElement
-    | TableCellElement
-    | TitleElement
-    | VideoElement
+  | BlockQuoteElement
+  | BulletedListElement
+  | CheckListItemElement
+  | EditableVoidElement
+  | HeadingElement
+  | HeadingTwoElement
+  | ImageElement
+  | LinkElement
+  | ButtonElement
+  | ListItemElement
+  | MentionElement
+  | ParagraphElement
+  | TableElement
+  | TableRowElement
+  | TableCellElement
+  | TitleElement
+  | VideoElement
 
 export type CustomText = {
-    bold?: boolean
-    italic?: boolean
-    code?: boolean
-    text: string
+  bold?: boolean
+  italic?: boolean
+  code?: boolean
+  text: string
 }
 
 export type EmptyText = {
-    text: string
+  text: string
 }
 
 export type CustomEditor = BaseEditor & ReactEditor & HistoryEditor
 
 declare module 'slate' {
-    interface CustomTypes {
-        Editor: CustomEditor
-        Element: CustomElement
-        Text: CustomText | EmptyText
-    }
+  interface CustomTypes {
+    Editor: CustomEditor
+    Element: CustomElement
+    Text: CustomText | EmptyText
+  }
 }
