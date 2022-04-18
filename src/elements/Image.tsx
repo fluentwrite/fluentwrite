@@ -4,7 +4,7 @@ import {
   useSelected,
   useSlateStatic
 } from "slate-react";
-import {Button} from "src/ui/button";
+import {Button} from "@mui/material";
 import {Transforms} from "slate";
 
 export const Image = ({attributes, children, element}) => {
@@ -25,7 +25,6 @@ export const Image = ({attributes, children, element}) => {
           src={element.url}
         />
         <Button
-          active
           onClick={() => Transforms.removeNodes(editor, {at: path})}
           className={""}
         >

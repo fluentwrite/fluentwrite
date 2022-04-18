@@ -3,11 +3,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createRoot} from "react-dom/client";
-import {Popper} from "./components/Popper";
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Popper />
+    <App />
   </React.StrictMode>
 );
 

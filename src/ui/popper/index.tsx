@@ -3,17 +3,17 @@ import { usePopper } from "react-popper";
 import {Placement} from "@popperjs/core";
 
 type Options = {
-  placement?: Placement
+  placement?: Placement,
+  children?: JSX.Element | JSX.Element[],
+  referenceRef: HTMLElement,
+  open: boolean
 }
 
 function Popper({...props}: Options) {
-  const [visible, setVisibility] = useState(false);
-
-  const [referenceRef, setReferenceRef] = useState<HTMLButtonElement>(null);
   const [popperRef, setPopperRef] = useState<HTMLDivElement>(null);
   const [arrowElement, setArrowElement] = useState(null);
 
-  const { styles, attributes } = usePopper(referenceRef, popperRef, {
+  const { styles, attributes } = usePopper(props.referenceRef, popperRef, {
     placement: props?.placement || 'right',
     modifiers: [
       {
@@ -30,18 +30,11 @@ function Popper({...props}: Options) {
     ]
   });
 
-  function handleDropdownClick(event) {
-    setVisibility(!visible);
-  }
-
   return (
     <React.Fragment>
-      <button ref={setReferenceRef} onClick={handleDropdownClick}>
-        Click Me
-      </button>
-      {visible && <div ref={setPopperRef} style={styles.popper} className={"bg-amber-300"} {...attributes.popper}>
+      {props.open && <div ref={setPopperRef} style={styles.popper} className={"bg-amber-300"} {...attributes.popper}>
         <div style={styles.offset}>
-          content
+          {props.children}
           <div ref={setArrowElement} style={styles.arrow} className={"bg-blue-700"}>《 </div>
         </div>
       </div>}
