@@ -1,7 +1,8 @@
 import {Editor, Element, Point, Range, Transforms} from "slate";
-import {BulletedListElement} from "src/custom-types";
+import {BulletedListElement, OrderedListElement} from "src/custom-types";
 
 const SHORTCUTS = {
+  '1.': 'ordered-list-item',
   '*': 'list-item',
   '-': 'list-item',
   '+': 'list-item',
@@ -41,7 +42,6 @@ export const withShortcuts = editor => {
         Transforms.setNodes<Element>(editor, newProperties, {
           match: n => Editor.isBlock(editor, n),
         })
-
         if (type === 'list-item') {
           const list: BulletedListElement = {
             type: 'bulleted-list',
@@ -52,6 +52,18 @@ export const withShortcuts = editor => {
               !Editor.isEditor(n) &&
               Element.isElement(n) &&
               n.type === 'list-item',
+          })
+        }
+        if (type === 'ordered-list-item') {
+          const list: OrderedListElement = {
+            type: 'ordered-list',
+            children: [],
+          }
+          Transforms.wrapNodes(editor, list, {
+            match: n =>
+              !Editor.isEditor(n) &&
+              Element.isElement(n) &&
+              n.type === 'ordered-list-item',
           })
         }
 

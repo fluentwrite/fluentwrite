@@ -7,6 +7,8 @@ export const ElementRender = ({attributes, children, element}) => {
       return <blockquote {...attributes}>{children}</blockquote>
     case 'bulleted-list':
       return <ul {...attributes}>{children}</ul>
+    case 'ordered-list':
+      return <ol {...attributes}>{children}</ol>
     case 'heading-one':
       return <h1 className={""} {...attributes}>{children}</h1>
     case 'heading-two':
@@ -20,6 +22,8 @@ export const ElementRender = ({attributes, children, element}) => {
     case 'heading-six':
       return <h6 {...attributes}>{children}</h6>
     case 'list-item':
+      return <li {...attributes}>{children}</li>
+    case 'ordered-list-item':
       return <li {...attributes}>{children}</li>
     case 'code':
       return <CodeElement {...attributes}>{children}</CodeElement>

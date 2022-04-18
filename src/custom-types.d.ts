@@ -9,6 +9,11 @@ export type BulletedListElement = {
   children: Descendant[]
 }
 
+export type OrderedListElement = {
+  type: 'ordered-list'
+  children: Descendant[]
+}
+
 export type CheckListItemElement = {
   type: 'check-list-item'
   checked: boolean
@@ -36,6 +41,8 @@ export type ButtonElement = { type: 'button'; children: Descendant[] }
 
 export type ListItemElement = { type: 'list-item'; children: Descendant[] }
 
+export type OrderedListItemElement = { type: 'ordered-list-item'; children: Descendant[] }
+
 export type MentionElement = {
   type: 'mention'
   character: string
@@ -57,6 +64,7 @@ export type VideoElement = { type: 'video'; url: string; children: EmptyText[] }
 type CustomElement =
   | BlockQuoteElement
   | BulletedListElement
+  | OrderedListElement
   | CheckListItemElement
   | EditableVoidElement
   | HeadingElement
@@ -65,6 +73,7 @@ type CustomElement =
   | LinkElement
   | ButtonElement
   | ListItemElement
+  | OrderedListItemElement
   | MentionElement
   | ParagraphElement
   | TableElement
